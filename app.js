@@ -53,7 +53,7 @@ function createTodoItem(todo, todoIndex){
       </button>
     `;
   const deleteButton = todoLI.querySelector('.delete-button');
-  deleteButton.addEventListener('click', () => {
+  deleteButton.addEventListener('click', ()=> {
     deleteTodoItem(todoIndex);
   })
 
@@ -67,7 +67,7 @@ function createTodoItem(todo, todoIndex){
 }
 
 function deleteTodoItem(todoIndex){
-  allTodos.filter((_, i)=> i !== todoIndex);
+  allTodos = allTodos.filter((_, i)=> i !== todoIndex);
   saveTodos();
   updateTodoList();
 }
