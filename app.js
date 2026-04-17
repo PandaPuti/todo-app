@@ -80,3 +80,16 @@ function getTodos(){
   const todos = localStorage.getItem("todos") || "[]";
   return JSON.parse(todos);
 }
+
+function switchTheme(){
+  const switchInput = document.querySelector('#theme-switch');
+
+  if(switchInput.checked){
+    document.body.style.backgroundColor = '#FDF6EC';
+    todoInput.style.color = '#333333';
+  }
+  else{
+    document.body.style.backgroundColor = 'black';
+    todoInput.style.color = '#FDF6EC';
+  }
+}
