@@ -82,14 +82,20 @@ function getTodos(){
 }
 
 function switchTheme(){
-  const switchInput = document.querySelector('#theme-switch');
+  const isDark = document.querySelector('#theme-switch').checked;
+  console.log(isDark);
 
-  if(switchInput.checked){
-    document.body.style.backgroundColor = '#FDF6EC';
-    todoInput.style.color = '#333333';
+  // If checked is true, we stay in light mode; if false, we go dark
+  if(!isDark){
+    document.body.classList.add('dark-mode');
   }
   else{
-    document.body.style.backgroundColor = 'black';
-    todoInput.style.color = '#FDF6EC';
+    document.body.classList.remove('dark-mode'); 
   }
+}
+
+function clearAll(){
+  allTodos = [];
+  saveTodos();
+  updateTodoList();
 }
