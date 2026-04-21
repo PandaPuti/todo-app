@@ -1,6 +1,9 @@
+const themeSwitch = document.querySelector('#theme-switch');
+initTheme();
 const todoForm = document.querySelector('form');
 const todoInput = document.getElementById('todo-input');
 const todoListUL = document.getElementById('todo-list');
+
 
 let allTodos = getTodos();
 updateTodoList();
@@ -82,15 +85,30 @@ function getTodos(){
 }
 
 function switchTheme(){
-  const isDark = document.querySelector('#theme-switch').checked;
+  const isDark = !themeSwitch.checked;
   console.log(isDark);
 
   // If checked is true, we stay in light mode; if false, we go dark
-  if(!isDark){
+  if(isDark){
     document.body.classList.add('dark-mode');
+    localStorage.setItem("theme", "dark")
   }
   else{
     document.body.classList.remove('dark-mode'); 
+    localStorage.setItem("theme", "light");
+  }
+}
+
+function initTheme() {
+  const savedTheme = localStorage.getItem("theme");
+
+  // 2. Apply the saved theme on page load
+  if (savedTheme === "dark") {
+    document.body.classList.add('dark-mode');
+    themeSwitch.checked = false; // Set the switch to the dark position
+  } else {
+    document.body.classList.remove('dark-mode');
+    themeSwitch.checked = true; // Set the switch to the light position
   }
 }
 
